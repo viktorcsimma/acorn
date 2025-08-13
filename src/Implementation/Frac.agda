@@ -45,7 +45,7 @@ open import Operator.Pow
 -- Since we don't use classes below SemiRing to maintain
 -- Haskell compatibility (by avoiding to give operators as parameters);
 -- the constraint here is SemiRing a.
-record Frac (a : Set) {{semiRing : SemiRing a}} : Set where
+record Frac (a : Set) {{@0 semiRing : SemiRing a}} : Set where
   constructor MkFrac
   field
     num den : a

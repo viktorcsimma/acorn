@@ -10,7 +10,8 @@ open import Algebra.Setoid
 open import Algebra.SemiRing
 
 -- Actually, the exponent need not be a Nat; it can also be from a "similar" structure.
-record Pow (a : Set) {{semiringa : SemiRing a}} (b : Set) {{semiringb : SemiRing b}}
+-- erase semi-ring constraints: https://github.com/agda/agda2hs/issues/366#issuecomment-2385064760
+record Pow (a : Set) {{@0 semiringa : SemiRing a}} (b : Set) {{@0 semiringb : SemiRing b}}
          : Set₁ where
   infixr 8 _^_
   field

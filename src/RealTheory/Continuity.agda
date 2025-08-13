@@ -35,7 +35,7 @@ UcFunOn {a} subset b = Σ' (a -> b) (UniformlyContinuousOn subset)
 -}
 
 
-record UniformlyContinuous {a b : Set} {{msa : MetricSpace a}} {{msb : MetricSpace b}}
+record UniformlyContinuous {a b : Set} {{@0 msa : MetricSpace a}} {{@0 msb : MetricSpace b}}
                               (@0 f : a -> b) : Set where
   constructor WrapMod
   field
@@ -47,7 +47,7 @@ open UniformlyContinuous public
 
 -- What if we used instances for that?
 
-UcFun : (a b : Set) {{msa : MetricSpace a}} {{msb : MetricSpace b}}
+UcFun : (a b : Set) {{@0 msa : MetricSpace a}} {{@0 msb : MetricSpace b}}
              -> Set
 UcFun a b = Σ' (a -> b) UniformlyContinuous
 {-# COMPILE AGDA2HS UcFun #-}

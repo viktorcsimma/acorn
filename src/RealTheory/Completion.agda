@@ -49,7 +49,7 @@ open import RealTheory.Interval
 -- This will be a newtype in Haskell.
 -- Sometimes, the range of a function might not be a prelength space;
 -- hence we allow this.
-record C (a : Set) {{metricSpace : MetricSpace a}}
+record C (a : Set) {{@0 metricSpace : MetricSpace a}}
               : Set where
   constructor MkC
   field
