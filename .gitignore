@@ -27,3 +27,4 @@ build.ninja
 
 # Cabal-generated files
 /dist-newstyle/
+*.agdai
