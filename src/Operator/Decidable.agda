@@ -7,9 +7,10 @@ module Operator.Decidable where
 open import Agda.Builtin.Bool
 open import Agda.Builtin.Equality
 open import Haskell.Prim.Either
-open import Haskell.Prim.Tuple using (_↔_)
+open import Haskell.Prim.Tuple
 open import Haskell.Prim using (IsTrue; if_then_else_)
 
+open import Tool.Logic
 open import Algebra.Setoid
 open import Tool.Relation
 open import Algebra.Order

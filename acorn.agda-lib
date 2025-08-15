@@ -1,4 +1,5 @@
 name: acorn
 depend:
-  agda2hs
+  agda2hs-base
+  agda2hs-containers
 include: src
