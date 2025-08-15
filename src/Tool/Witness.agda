@@ -7,9 +7,10 @@ module Tool.Witness where
 open import Agda.Builtin.Nat
 open import Agda.Builtin.Bool
 open import Agda.Builtin.Equality
-open import Haskell.Prim.Tuple using (_↔_; _,_; fst)
+open import Haskell.Prim.Tuple using (_,_; fst)
 open import Haskell.Prim using (IsTrue; itsTrue)
 
+open import Tool.Logic
 open import Tool.PropositionalEquality
 open import Tool.ErasureProduct
 

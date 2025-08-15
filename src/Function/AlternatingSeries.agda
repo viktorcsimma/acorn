@@ -58,6 +58,9 @@ precision 2^k such as n*2^k < epsilon/2.
 -- This way, we can have only one stream and ensure
 -- the denominator is not zero.
 
+-- Whether we are near enough to zero that
+-- we can stop here.
+--
 -- We define this that way because
 -- we will need exactly this function
 -- in sumAlternatingStream.
@@ -75,14 +78,13 @@ thatNearToZero xk ε k = let prec = ratLog2Floor (proj₁ ε) {proj₂ ε} + neg
                                              prec)
                                 + shift one prec)
                           ≤# proj₁ (halvePos ε)
-                          {-
-                          ball (halvePos ε)
-                               (appDiv (num xk) (den xk) (denNotNull xk)
-                                     prec
-                                 + shift one prec)
-                               null)
-                          -}
 {-# COMPILE AGDA2HS thatNearToZero #-}
+
+-- A proposition-as-type meaning that
+-- for all ε, there exists a member in the stream
+-- which is near enough to zero
+-- (and we can stop there).
+-- This also means that the series converges to zero.
 HasThatNearToZero : {a : Set} {{ara : AppRational a}} -> Stream (Frac a) -> Set
 HasThatNearToZero xs = ∀ (ε : PosRational) -> Σ0 Nat (λ k -> IsTrue (thatNearToZero (index xs k) ε k))
 {-# COMPILE AGDA2HS HasThatNearToZero #-}
@@ -112,9 +114,9 @@ autoHasThatNearToZero xs ε = go xs ε 0
 
 -- we will need a tuple here
 IsAlternating : {a : Set} {{ara : AppRational a}} -> Stream (Frac a) -> Set
-IsAlternating xs = Tuple0 (HasThatNearToZero xs)
-                   ( (∀ (i : Nat) -> abs (index xs (suc i)) < abs (index xs i))  -- decreasing
-                   × (∀ (i : Nat) -> index xs i * index xs (suc i) < null) )     -- alternating
+IsAlternating xs = Tuple0 (HasThatNearToZero xs)                                -- converging to 0
+                   ( (∀ (i : Nat) -> abs (index xs (suc i)) < abs (index xs i)) -- decreasing
+                   × (∀ (i : Nat) -> index xs i * index xs (suc i) < null) )    -- alternating
 {-# COMPILE AGDA2HS IsAlternating #-}
 
 -- The sum of the first n elements of a stream.

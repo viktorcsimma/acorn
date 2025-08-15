@@ -29,6 +29,7 @@ open import Haskell.Prim using (id; const; IsTrue)
 
 open import Tool.Cheat
 
+open import Tool.Logic
 open import Tool.ErasureProduct
 open import Algebra.SemiRing
 open import Algebra.Ring

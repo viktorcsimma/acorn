@@ -8,6 +8,7 @@ open import Haskell.Prim using (⊥)
 open import Haskell.Prim.Tuple
 open import Haskell.Prim.Either
 
+open import Tool.Logic
 open import Tool.Relation
 
 record Setoid (a : Set) : Set₁ where
